@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: Hello Jekyll
 title: You're up and running!
 ---
 
