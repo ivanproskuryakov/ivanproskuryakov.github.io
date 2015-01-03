@@ -1,0 +1,21 @@
+# Site navigation links
+
+- title: Story
+  url: /
+  excerpt: "Everything you need to know to get started with Skinny Bones and Jekyll."
+  image: 400x250.gif
+
+- title: Publications
+  url: /publications/
+  excerpt: "Examples of long form posts."
+  image: 400x250.gif
+
+#- title: Media
+#  url: /media/
+#  excerpt: "Examples of media posts perfect for showcasing work, photographs, etc."
+#  image: 400x250.gif
+
+- title: Hire Me
+  url: /hire-me/
+  excerpt: "All about Skinny Bones for Jekyll."
+  image: 400x250.if
