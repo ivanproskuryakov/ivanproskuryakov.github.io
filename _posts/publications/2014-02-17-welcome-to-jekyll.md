@@ -1,7 +1,7 @@
 ---
-layout: article
+layout: publications
 title:  "Welcome to Jekyll!"
-categories: articles
+categories: publications
 modified: 2014-02-19
 share: false
 ads: true

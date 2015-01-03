@@ -1,8 +1,8 @@
 ---
-layout: article
+layout: publications
 title: "Syntax Highlighting Test"
 modified:
-categories: articles
+categories: publications
 excerpt: "Demo post to test the various ways of using syntax highlighting."
 tags: []
 image:
