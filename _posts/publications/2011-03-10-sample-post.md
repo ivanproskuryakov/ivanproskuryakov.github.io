@@ -7,11 +7,9 @@ toc: false
 comments: true
 ---
 
-## $routeProvider
-
-AngularJS very young framework, but some time ago there was only $routeProvider solution for a routing for AngularJS app.
-$routeProvider is linking specific URL to controller and assigning a template. Pretty simple.
-
+AngularJS is a young framework, and some time ago there was only **$routeProvider** solution for a routing.
+What $routeProvider is doing, is linking specific URL to a controller and assigning a template.
+Bellow, is the basic implementation:
 {% highlight JavaScript %}
 $routeProvider
         .when('/contact/', {
@@ -21,14 +19,17 @@ $routeProvider
 });
 {% endhighlight %}
 
-After that generated template rendered with **<div ng-view></div>** directive
-Inside the templates, links could be done in two ways with typical href attribute or with ng-href angular attribute, which is basically the same.
-Code sample: [http://plnkr.co/edit/uwYSb9](http://plnkr.co/edit/uwYSb9)
+Generated template rendered inside **<div ng-view></div>** that you specify inside parent layout, in most cases its index.html.
+Routing links could be done in two ways with typical href attribute or with ng-href angular attribute, which are basically the same.<br/>
+Sample on Plunker: [http://plnkr.co/edit/uwYSb9](http://plnkr.co/edit/uwYSb9)<br/>
+According the documentation **$routeProvider** is a routing standard for now, this approach is also used in [official tutorial](https://docs.angularjs.org/tutorial).<br/>
 
-According documentation **$routeProvider** is a routing standard for now, this approach is also used in [official tutorial](https://docs.angularjs.org/tutorial).
 But… Like with all the things, $routeProvider was not perfect.
 
-## $stateProvider
+
+
+
+# $stateProvider
 The $routeProvider is dead, long live the $stateProvider!
 
 $stateProvider allows us to give names for routes. Having a name we can duplicate the route with another name assign different controller, view, well.. we can do whatever we want!
@@ -44,8 +45,8 @@ $stateProvider
 {% endhighlight %}
 
 In templates, there is no need to use direct addresses, no need to change href attribute each time we change route path. With states we just pass state name to ui-sref attribute. Its just better.
-Code sample on plunker: [http://plnkr.co/edit/233aGO?p=preview](http://plnkr.co/edit/233aGO?p=preview)
+Sample on Plunker: [http://plnkr.co/edit/233aGO?p=preview](http://plnkr.co/edit/233aGO?p=preview)
 
-Both of this approaches and more coding examples you will find in Aisel project that I’m working.
-$stateProvider used current branch [https://github.com/ivanproskuryakov/Aisel](https://github.com/ivanproskuryakov/Aisel)
-$routeProvider was used in release 0.0.1 [https://github.com/ivanproskuryakov/Aisel/releases/tag/v0.1.0](https://github.com/ivanproskuryakov/Aisel/releases/tag/v0.1.0)
+> Both of this approaches and more examples you may find in [Aisel](https://github.com/ivanproskuryakov/Aisel)<br/>
+> **$stateProvider** now [https://github.com/ivanproskuryakov/Aisel](https://github.com/ivanproskuryakov/Aisel)<br/>
+> **$routeProvider** was used in release 0.0.1 [https://github.com/ivanproskuryakov/Aisel/releases/tag/v0.1.0](https://github.com/ivanproskuryakov/Aisel/releases/tag/v0.1.0)
