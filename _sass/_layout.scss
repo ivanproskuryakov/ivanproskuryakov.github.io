@@ -99,7 +99,6 @@
 			@include font-size(16,no);
 			line-height: .5 * $masthead-height; // half the height to center vertically
 			color: $black;
-			text-transform: uppercase;
 		}
 	}
 }
@@ -107,7 +106,8 @@
 	@include clearfix;
 	font-weight: 700;
 	a {
-		color: lighten($black,60);
+        font-size: 14px;
+		color: lighten($black,20);
 	}
 }
 
@@ -371,6 +371,7 @@
 	.post-excerpt {
 		@include font-size(14);
         line-height: 1.2;
+        margin-top: 20px;
 	}
 	.post-teaser {
 		position: relative;
