@@ -1,6 +1,6 @@
 ---
 layout: publications
-title: "Automated xCode project builds from terminal."
+title: "xCode/iOS compilation from terminal"
 categories: publications
 modified: 2013-02-20T11:57:41-04:00
 toc: false

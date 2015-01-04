@@ -1,6 +1,6 @@
 ---
 layout: publications
-title: "AngularJS $routeProvider vs $stateProvider"
+title: "$routeProvider vs $stateProvider in AngularJS"
 categories: publications
 modified: 2014-08-27T11:57:41-04:00
 toc: false
