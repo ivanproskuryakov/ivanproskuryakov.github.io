@@ -2,13 +2,13 @@
 
 - title: Story
   url: /
-  excerpt: "Everything you need to know to get started with Skinny Bones and Jekyll."
-  image: 400x250.gif
+#  excerpt: "Everything you need to know to get started with Skinny Bones and Jekyll."
+#  image: 400x250.gif
 
 - title: Publications
   url: /publications/
-  excerpt: "Examples of long form posts."
-  image: 400x250.gif
+#  excerpt: "Examples of long form posts."
+#  image: 400x250.gif
 
 #- title: Media
 #  url: /media/
@@ -17,5 +17,5 @@
 
 - title: Hire Me
   url: /hire-me/
-  excerpt: "All about Skinny Bones for Jekyll."
-  image: 400x250.if
+#  excerpt: "All about Skinny Bones for Jekyll."
+#  image: 400x250.if
