@@ -7,14 +7,17 @@ toc: false
 comments: true
 ---
 
-Architecture and code design is most important part of development process.
-Applications without architecture with complicated functionality: users, content management, categorisation, tagging,
-reviews, are almost impossible to maintain, work on issues & fix the bugs.
+Architecture and code design are  the most important parts of development process.
+Applications without architecture with complicated functionality: users, content management,
+categorisation, tagging, reviews, are almost impossible to maintain, work on issues & fix the bugs.
 
-App with no organisation consumes more time, and chance that you forgot something and later will have an issue dramatically increases.
-Do we want or not, we will start thinking about the code re-organisation.
+An app with no organisation consumes more time, and a chance that you forgot something and will
+have an issue later on, dramatically increases. Whether we want it or not, we will start thinking
+about the code re-organisation.
 
-Otherwise, app designed with standard and architecture give us possibility to decompose functionality,
-or group semantically same parts into modules.
-This gives possibility to delegate different development stages on different teams:
- team A work on User functionality, team B responsible for content management, etc..
+Otherwise, an app designed with standard architecture give us a possibility to decompose functionality,
+or semantically group  the same parts into modules. This gives a possibility to delegate different
+development stages to different teams, e.g. team A will work on User Functionality, team B will be
+responsible for content management etc..
+
+Article remains not finished ...
