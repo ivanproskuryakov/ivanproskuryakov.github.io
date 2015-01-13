@@ -162,13 +162,13 @@
 	}
 	@at-root {
 		.page-content {
-			@include media($medium) {
-				@include row($direction: RTL);
-				//@include span-columns(7 of 9);
-			}
-			@include media($large) {
-				@include span-columns(7 of 9);
-			}
+//			@include media($medium) {
+//				@include row($direction: RTL);
+//				@include span-columns(7 of 9);
+//			}
+//			@include media($large) {
+//				@include span-columns(7 of 9);
+//			}
 			// larger font for intro paragraph
 //			> p {
 //				&:first-child {

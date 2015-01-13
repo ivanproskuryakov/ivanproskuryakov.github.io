@@ -1,6 +1,6 @@
 ---
 layout: publications
-title: "Modular design pattern for AngularJS apps"
+title: "Architecture in AngularJS apps"
 categories: publications
 modified: 2014-08-27T11:57:41-04:00
 toc: false
