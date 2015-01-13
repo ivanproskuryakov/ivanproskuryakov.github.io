@@ -5,6 +5,7 @@ image:
   feature: lock-1600x800.jpg
 ---
 
+<!--
 <div class="tiles">
 
 <div class="tile">
@@ -28,3 +29,4 @@ image:
 </div><!-- /.tile -->
 
 </div><!-- /.tiles -->
+-->
