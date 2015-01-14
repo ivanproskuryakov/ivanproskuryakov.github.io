@@ -7,6 +7,7 @@ toc: false
 comments: true
 image:
   feature: AngularJS.jpg
+  teaser: AngularJS.jpg
 ---
 Architecture and code design are one of the most important things in development process.
 Applications without architecture with complicated functionality: users, content management,

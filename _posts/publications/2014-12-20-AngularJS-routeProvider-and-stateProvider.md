@@ -5,6 +5,9 @@ categories: publications
 modified: 2014-08-27T11:57:41-04:00
 toc: false
 comments: true
+image:
+  feature: AngularJS.jpg
+  teaser: AngularJS.jpg
 ---
 
 AngularJS is a young framework, and some time ago there was only **$routeProvider** solution for a routing.
