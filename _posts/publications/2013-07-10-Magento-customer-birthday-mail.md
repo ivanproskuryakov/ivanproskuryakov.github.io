@@ -5,6 +5,9 @@ categories: publications
 modified: 2013-07-10T11:57:41-04:00
 toc: false
 comments: true
+image:
+  feature: Magento.jpg
+  teaser: Magento.jpg
 ---
 
 Script that grabs the customers are celebrating their birthday and sends them email.

@@ -5,6 +5,9 @@ categories: publications
 modified: 2013-07-27T11:57:41-04:00
 toc: false
 comments: true
+image:
+  feature: Magento.jpg
+  teaser: Magento.jpg
 ---
 ChannelAdvisors uses SOAP for API. Of cource plain POST requests, CURL, file_get_contents are the nice things, but for me SOAP is a much easier to use.<br/>
 For more information visit developer.channeladvisor.com website, it contains all the info you will need.<br/>
