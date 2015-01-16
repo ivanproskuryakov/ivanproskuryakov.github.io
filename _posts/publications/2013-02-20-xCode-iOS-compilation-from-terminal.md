@@ -5,10 +5,13 @@ categories: publications
 modified: 2013-02-20T11:57:41-04:00
 toc: false
 comments: true
+image:
+  feature: xCode.jpg
+  teaser: xCode.jpg
 ---
 
-100% working bash compilation commands for xCode 4.x+
-I spent about 3 weeks in google+bash+xcode to make everything work !!! It was a kind of insane and its finally done! I hope this could help someone.
+Bash compilation commands for xCode 4.x+<br/>
+Three weeks or more was spent with google+bash+xcode to make everything work! It was a hard process to make it work and its finally done! I hope this could help someone.
 
 ##keychain & AppleWWDRCA.cer
 
