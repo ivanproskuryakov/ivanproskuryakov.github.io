@@ -9,6 +9,8 @@ image:
   feature: Magento.jpg
   teaser: Magento.jpg
 ---
+> [Sources: https://github.com/ivanproskuryakov/MagentoChanneladvisor](https://github.com/ivanproskuryakov/MagentoChanneladvisor)
+
 ChannelAdvisors uses SOAP for API. Of cource plain POST requests, CURL, file_get_contents are the nice things, but for me SOAP is a much easier to use.<br/>
 For more information visit developer.channeladvisor.com website, it contains all the info you will need.<br/>
 Page http://developer.channeladvisor.com/display/cadn/SubmitOrder for Order Submit
