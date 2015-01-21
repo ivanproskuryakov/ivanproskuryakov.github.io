@@ -9,11 +9,12 @@ image:
   feature: AngularJS.jpg
   teaser: AngularJS.jpg
 ---
-Architecture and code design are one of the most important things in development process.
-Applications without architecture with complicated functionality: users, content management,
-categorisation, tagging, reviews, are almost impossible to maintain, work on issues & fix the bugs.
+Architecture and code design are one of the most important things of development process.
+Application with complicated functionality (like: users, content management,
+categorisation, tagging, reviews,etc..) with no design pattern, extremely hard to maintain,
+work on issues & fix bugs.
 
-Explanation based on design pattern that are being used in live open-source project [https://github.com/ivanproskuryakov/Aisel](https://github.com/ivanproskuryakov/Aisel)
+This explanation based on design pattern that is being used in live open-source project [https://github.com/ivanproskuryakov/Aisel](https://github.com/ivanproskuryakov/Aisel)
 
  {% highlight JavaScript %}
 |-- 404.html
@@ -101,27 +102,27 @@ Explanation based on design pattern that are being used in live open-source proj
     |-- styles.css
  {% endhighlight %}
 
-**A**. Development and production environments restricted by having different directory indexes.
-On local machine our virtual host points to index_dev.html, on production - index.html.
+**A**. Development and production environments are restricted with different directory index files.
+On the local machine virtual host points to the index_dev.html, on production to index.html file.
 
 
 **B**. [RequireJS](http://requirejs.org/) for dynamic(lazy) javascript module loading.
-For development app uses app/main.js as main [RequireJS](http://requirejs.org/) file:
+During development requireJS points to **/app/main.js**
  {% highlight html %}
  <script data-main="/app/main" src="/bower_components/requirejs/require.js"></script>
  {% endhighlight %}
-and minified build/main.js for running on production environments:
+On production environment it bind with **/build/main**
  {% highlight html %}
  <script data-main="/build/main" src="/bower_components/requirejs/require.js"></script>
  {% endhighlight %}
 
 All of application JavaScript files, dependencies and vendors are defined in **main.js**
-using [RequireJS](http://requirejs.org/) library and ADM(Asynchronous Module Definition) pattern.
+with ADM(Asynchronous Module Definition) pattern.
 
-> Why AMD pattern is so nice, described on [requirejs.org](requirejs.org) -> [Why AMD?](http://requirejs.org/docs/whyamd.html) page.
+> Advantages of the AMD pattern are described on [requirejs.org](requirejs.org) -> [Why AMD?](http://requirejs.org/docs/whyamd.html) page.
 
 **C.**
-Main.js file is the main require.js and application configuration file, in it we define vendors dependencies and modules of AngularJS application
+Main.js file is the main configuration file, with paths to vendors, dependencies and modules used in the app
 
  {% highlight JavaScript %}
 require.config({
@@ -174,26 +175,28 @@ have an issue later on, dramatically increases. Whether we want it or not, we wi
 about the code re-organisation.
 
 Otherwise, an app designed with modular architecture give us a possibility to decompose functionality,
-or semantically group the same parts into modules. This gives a possibility to delegate different
+refactor stand alone units anytime, group them into modules. It gives us a possibility to delegate different
 development stages to different teams, e.g. team A will work on User Functionality, team B will be
 responsible for content management etc..
 
-In short application should have following principles:<br/>
- **A.** Code must be flexible.<br/>
- It means we need to decompose code into small logical parts,
- if something went wrong in future it will be easy to refactor the code
 
- **B.** Increase has to be simple<br/>
+In short an application should have the following principles:<br/>
+
+ **B.** Code simplicity<br/>
  This will increase productivity, code understanding for newcomers. Even if the project has documentation
  it will be easy to understand design pattern and start contribution.
 
- **C.** Detachable functionality<br/>
+ **A.** Logical Units<br/>
+ It means we need to decompose code into small logical units,
+ if something goes in future we will need to work only with single unit.
+
+ **C.** Independent functionality<br/>
  Possibility to enable/disable a different part of the functionality.<br/>
  Like example bellow:<br/>
   - Adam has Resource, User, Page, Product modules enabled<br/>
-  - John use Resource, User, Page<br/>
+  - John uses Resource, User, Page<br/>
   - Petr has Resource, Contact<br/>
- In this case if someone breaks the Page module, Petr still will be able to do his things with the Contact module,
- even if all team would commit updates into a Master branch.
+ In this case if Adam breaks the Page module, Petr will still be able to do his tasks with the Contact module,
+ even if whole team commits updates into the Master branch.
 
 This article remains not finished ...
