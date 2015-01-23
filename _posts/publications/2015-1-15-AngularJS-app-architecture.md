@@ -24,20 +24,18 @@ This explanation is based on design pattern that is being used in a current open
 |   |   |   |-- AiselProduct.js // Bootstrap file for dependencies
 |   |   |   |-- config // Module configuration, routing and constants are stored inside config directory
 |   |   |   |   |-- product.js
+|   |   |   |
 |   |   |   |-- controllers // Controllers directory
 |   |   |   |   |-- product.js
-|   |   |   |   |-- productCategory.js
-|   |   |   |   |-- productCategoryDetails.js
-|   |   |   |   |-- productDetails.js
+|   |   |   |   |-- ...
+|   |   |   |
 |   |   |   |-- services // Services & factories location
 |   |   |   |   |-- product.js
-|   |   |   |   |-- productCategory.js
+|   |   |   |   |-- ...
+|   |   |   |
 |   |   |   |-- views // Module specific views
-|   |   |       |-- category-detail.html
-|   |   |       |-- category.html
-|   |   |       |-- product-detail.html
-|   |   |       |-- product.html
-|   |   |       |-- sidebar.html
+|   |   |   |   |-- category.html
+|   |   |   |   |-- ...
 |   |   |
 |   |   |-- Contact // Contact module
 |   |   |   |-- AiselContact.js
@@ -102,11 +100,11 @@ This explanation is based on design pattern that is being used in a current open
     |-- styles.css
  {% endhighlight %}
 
-**A**. Development and production environments are separated by different directory index files.
+**A. Environments** <br/>
+Development and production environments are separated by different directory index files.
 Virtual host points to index_dev.html file on the local machine and to the index.html on production.
 
-
-**B**. [RequireJS](http://requirejs.org/) for dynamic(lazy) javascript module loading.
+This design pattern based on [RequireJS](http://requirejs.org/) file and module loader.
 During development requireJS points to **/app/main.js**
  {% highlight html %}
  <script data-main="/app/main" src="/bower_components/requirejs/require.js"></script>
@@ -121,7 +119,7 @@ with ADM(Asynchronous Module Definition) pattern.
 
 > ... Advantages of the AMD pattern are described on [requirejs.org](requirejs.org) -> [Why AMD?](http://requirejs.org/docs/whyamd.html) page.
 
-**C.**
+**B. RequireJS configuration**<br/>
 Main.js file is the main configuration file with paths to the vendors and dependencies that are used in the app.
 
  {% highlight JavaScript %}
@@ -183,13 +181,10 @@ define([
 });
 {% endhighlight %}
 
-**D.**
+**C. AngularJS root**
 With RequireJS module loader, app.js and other files used in application become modules,
 in this case they must be wrapped with **"define([]"** structure.
 Code of app.js loader has to be also wrapped with **define** as shown below:
-
-> ... More about module loader at [http://requirejs.org/docs/api.html#funcmodule](http://requirejs.org/docs/api.html#funcmodule)
-
 {% highlight JavaScript %}
  define([
          'angular', 'jQuery', 'underscore', 'angular-resource',
@@ -224,7 +219,32 @@ Code of app.js loader has to be also wrapped with **define** as shown below:
          return app;
      });
 {% endhighlight %}
+> ... More about module loader at [http://requirejs.org/docs/api.html#funcmodule](http://requirejs.org/docs/api.html#funcmodule)
 
+**D. Module structure**
+Each logical unit of application functionality must be implemented as single module.
+Full module name should consist of namespace and module name ex: AiselProduct.
+{% highlight JavaScript %}
+|-- app
+|   |-- Aisel
+|   |   |-- Product // Product module
+|   |   |   |-- AiselProduct.js // Bootstrap file for dependencies
+|   |   |   |-- config // Module configuration, routing and constants are stored inside config directory
+|   |   |   |   |-- product.js
+|   |   |   |-- controllers // Controllers directory
+|   |   |   |   |-- product.js
+|   |   |   |   |-- productCategory.js
+|   |   |   |   |-- productCategoryDetails.js
+|   |   |   |   |-- productDetails.js
+|   |   |   |-- services // Services & factories location
+|   |   |   |   |-- product.js
+|   |   |   |-- views // Module specific views
+|   |   |       |-- category-detail.html
+|   |   |       |-- category.html
+|   |   |       |-- product-detail.html
+|   |   |       |-- product.html
+|   |   |       |-- sidebar.html
+{% endhighlight %}
 
 ## Final thoughts
 An app with no organisation consumes more time, and a chance that you forgot something and will
@@ -238,7 +258,6 @@ responsible for content management etc..
 
 
 In short an application should have the following principles:<br/>
-
  **B.** Code simplicity<br/>
  This will increase productivity and code understanding for newcomers. Even if the project has no documentation,
  it will be easy to understand design pattern and start contribution.
@@ -246,6 +265,8 @@ In short an application should have the following principles:<br/>
  **A.** Logical Units<br/>
  It means we need to decompose the code into small logical units,
  if something goes wrong in future we will need to work only with a single unit.
+ Defined strict application structure will also increase understanding for all contributors or team members.
+ It means less questions/time, better code quality.
 
  **C.** Independent functionality<br/>
  Possibility to enable/disable a different part of the functionality.<br/>
