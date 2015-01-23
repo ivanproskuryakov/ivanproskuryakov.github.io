@@ -100,7 +100,7 @@ This explanation is based on design pattern that is being used in a current open
     |-- styles.css
  {% endhighlight %}
 
-**A. Environments** <br/>
+**A. App environments** <br/>
 Development and production environments are separated by different directory index files.
 Virtual host points to index_dev.html file on the local machine and to the index.html on production.
 
@@ -181,7 +181,7 @@ define([
 });
 {% endhighlight %}
 
-**C. AngularJS root**
+**C. AngularJS root**<br/>
 With RequireJS module loader, app.js and other files used in application become modules,
 in this case they must be wrapped with **"define([]"** structure.
 Code of app.js loader has to be also wrapped with **define** as shown below:
@@ -221,7 +221,7 @@ Code of app.js loader has to be also wrapped with **define** as shown below:
 {% endhighlight %}
 > ... More about module loader at [http://requirejs.org/docs/api.html#funcmodule](http://requirejs.org/docs/api.html#funcmodule)
 
-**D. Module structure**
+**D. Module structure**<br/>
 Each logical unit of application functionality must be implemented as single module.
 Full module name should consist of namespace and module name ex: AiselProduct.
 {% highlight JavaScript %}
@@ -258,17 +258,17 @@ responsible for content management etc..
 
 
 In short an application should have the following principles:<br/>
- **B.** Code simplicity<br/>
+ **A. Code simplicity**<br/>
  This will increase productivity and code understanding for newcomers. Even if the project has no documentation,
  it will be easy to understand design pattern and start contribution.
 
- **A.** Logical Units<br/>
+ **A. Logical Units** <br/>
  It means we need to decompose the code into small logical units,
  if something goes wrong in future we will need to work only with a single unit.
  Defined strict application structure will also increase understanding for all contributors or team members.
  It means less questions/time, better code quality.
 
- **C.** Independent functionality<br/>
+ **C. Independent functionality** <br/>
  Possibility to enable/disable a different part of the functionality.<br/>
  Example:<br/>
   - Adam has Resource, User, Page and Product modules enabled<br/>
