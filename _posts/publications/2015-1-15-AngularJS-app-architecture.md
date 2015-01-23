@@ -9,12 +9,12 @@ image:
   feature: AngularJS.jpg
   teaser: AngularJS.jpg
 ---
-Architecture and code design are one of the most important things of development process.
-Application with complicated functionality (like: users, content management,
-categorisation, tagging, reviews,etc..) with no design pattern, extremely hard to maintain,
-work on issues & fix bugs.
+Architecture and code design are two of the most important things of development process.
+An application with complicated functionality, such as users, content management,
+categorisation, tagging, reviews, etc.. and no design pattern is extremely hard to maintain
+as well as to work on issues & to fix bugs.
 
-This explanation based on design pattern that is being used in live open-source project [https://github.com/ivanproskuryakov/Aisel](https://github.com/ivanproskuryakov/Aisel)
+This explanation is based on design pattern that is being used in a current open-source project [https://github.com/ivanproskuryakov/Aisel](https://github.com/ivanproskuryakov/Aisel)
 
  {% highlight JavaScript %}
 |-- 404.html
@@ -75,7 +75,7 @@ This explanation based on design pattern that is being used in live open-source 
 |   |
 |   |-- app.js // Main AngularJS application file
 |   |-- bootstrap.js
-|   |-- environment.js // Application settings like API URL, locale, etc..
+|   |-- environment.js // Application settings like API URL, locale etc..
 |   |-- main.js // RequireJS loader for development environment
 |
 |-- bower_components // Libraries installed with bower
@@ -102,8 +102,8 @@ This explanation based on design pattern that is being used in live open-source 
     |-- styles.css
  {% endhighlight %}
 
-**A**. Development and production environments are restricted with different directory index files.
-On the local machine virtual host points to the index_dev.html, on production to index.html file.
+**A**. Development and production environments are separated by different directory index files.
+Virtual host points to index_dev.html file on the local machine and to the index.html on production.
 
 
 **B**. [RequireJS](http://requirejs.org/) for dynamic(lazy) javascript module loading.
@@ -111,7 +111,7 @@ During development requireJS points to **/app/main.js**
  {% highlight html %}
  <script data-main="/app/main" src="/bower_components/requirejs/require.js"></script>
  {% endhighlight %}
-On production environment it bind with **/build/main**
+while on production environment it is bound by **/build/main**
  {% highlight html %}
  <script data-main="/build/main" src="/bower_components/requirejs/require.js"></script>
  {% endhighlight %}
@@ -122,14 +122,14 @@ with ADM(Asynchronous Module Definition) pattern.
 > ... Advantages of the AMD pattern are described on [requirejs.org](requirejs.org) -> [Why AMD?](http://requirejs.org/docs/whyamd.html) page.
 
 **C.**
-Main.js file is the main configuration file, with paths to vendors and dependencies that used in the app.
+Main.js file is the main configuration file with paths to the vendors and dependencies that are used in the app.
 
  {% highlight JavaScript %}
 require.config({
     // Load project dependencies
     paths: {
         'angular': '../bower_components/angular/angular',    // Javascript library name
-        'jQuery': '../bower_components/jquery/jquery.min',   // .js extension not used
+        'jQuery': '../bower_components/jquery/jquery.min',   // .js extension is not used
         'domReady': '../bower_components/domReady/domReady',
         'twitter-bootstrap': '../bower_components/sass-bootstrap/dist/js/bootstrap',
         'angular-resource': '../bower_components/angular-resource/angular-resource',
@@ -139,7 +139,7 @@ require.config({
         'angular-notify': '../bower_components/angular-notify/dist/angular-notify.min',
         "... other bower dependencies"
     },
-    // Add angular modules that does not support AMD out of the box, put it in a shim
+    // Add angular modules that do not support AMD out of the box, put them in a shim
     shim: {
         'angular-route': ['angular'],
         'angular-ui-router': ['angular'],
@@ -169,7 +169,7 @@ require.config({
 });
  {% endhighlight %}
 
-In **deps** section requireJS loads modules and manually start up angular application with boostrap.js
+In **deps** section requireJS loads modules and manually starts angular application with boostrap.js
 {% highlight JavaScript %}
 define([
     'require',
@@ -184,9 +184,9 @@ define([
 {% endhighlight %}
 
 **D.**
-With requireJS module loader, app.js and other application javascript files used in application becomes a modules,
-in this case they must be wrapped with **"define([]"**. Code of app.js file
-that wrapped using requireJS module loader are show bellow.
+With RequireJS module loader, app.js and other files used in application become modules,
+in this case they must be wrapped with **"define([]"** structure.
+Code of app.js loader has to be also wrapped with **define** as shown below:
 
 > ... More about module loader at [http://requirejs.org/docs/api.html#funcmodule](http://requirejs.org/docs/api.html#funcmodule)
 
@@ -231,29 +231,29 @@ An app with no organisation consumes more time, and a chance that you forgot som
 have an issue later on, dramatically increases. Whether we want it or not, we will start thinking
 about the code re-organisation.
 
-Otherwise, an app designed with modular architecture give us a possibility to decompose functionality,
-refactor stand alone units anytime, group them into modules. It gives us a possibility to delegate different
-development stages to different teams, e.g. team A will work on User Functionality, team B will be
+Otherwise, an app designed with modular architecture gives us a possibility to decompose functionality,
+refactor stand alone units any time and group them into modules. It gives us a possibility to delegate different
+development stages to different teams, e.g. team A will work on User functionality, team B will be
 responsible for content management etc..
 
 
 In short an application should have the following principles:<br/>
 
  **B.** Code simplicity<br/>
- This will increase productivity, code understanding for newcomers. Even if the project has documentation
+ This will increase productivity and code understanding for newcomers. Even if the project has no documentation,
  it will be easy to understand design pattern and start contribution.
 
  **A.** Logical Units<br/>
- It means we need to decompose code into small logical units,
- if something goes in future we will need to work only with single unit.
+ It means we need to decompose the code into small logical units,
+ if something goes wrong in future we will need to work only with a single unit.
 
  **C.** Independent functionality<br/>
  Possibility to enable/disable a different part of the functionality.<br/>
- Like example bellow:<br/>
-  - Adam has Resource, User, Page, Product modules enabled<br/>
-  - John uses Resource, User, Page<br/>
-  - Petr has Resource, Contact<br/>
- In this case if Adam breaks the Page module, Petr will still be able to do his tasks with the Contact module,
- even if whole team commits updates into the Master branch.
+ Example:<br/>
+  - Adam has Resource, User, Page and Product modules enabled<br/>
+  - John uses Resource, User and Page<br/>
+  - Peter has Resource and Contact<br/>
+ In this case if Adam breaks the Page module, Peter will still be able to do his tasks with the Contact module,
+ even if the whole team commits updates into the Master branch.
 
 This article remains not finished ...
