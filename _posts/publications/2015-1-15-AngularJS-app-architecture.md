@@ -119,18 +119,18 @@ On production environment it bind with **/build/main**
 All of application JavaScript files, dependencies and vendors are defined in **main.js**
 with ADM(Asynchronous Module Definition) pattern.
 
-> Advantages of the AMD pattern are described on [requirejs.org](requirejs.org) -> [Why AMD?](http://requirejs.org/docs/whyamd.html) page.
+> ... Advantages of the AMD pattern are described on [requirejs.org](requirejs.org) -> [Why AMD?](http://requirejs.org/docs/whyamd.html) page.
 
 **C.**
-Main.js file is the main configuration file, with paths to vendors, dependencies and modules used in the app
+Main.js file is the main configuration file, with paths to vendors and dependencies that used in the app.
 
  {% highlight JavaScript %}
 require.config({
     // Load project dependencies
     paths: {
-        'jQuery': '../bower_components/jquery/jquery.min',
+        'angular': '../bower_components/angular/angular',    // Javascript library name
+        'jQuery': '../bower_components/jquery/jquery.min',   // .js extension not used
         'domReady': '../bower_components/domReady/domReady',
-        'angular': '../bower_components/angular/angular',
         'twitter-bootstrap': '../bower_components/sass-bootstrap/dist/js/bootstrap',
         'angular-resource': '../bower_components/angular-resource/angular-resource',
         'angular-route': '../bower_components/angular-route/angular-route',
@@ -155,12 +155,12 @@ require.config({
     // Kick start the application
     deps: [
         './environment',
-        './Kernel/Resource/KernelResource',
-        './Aisel/Homepage/AiselHomepage',
-        './Aisel/Contact/AiselContact',
-        './Aisel/Search/AiselSearch',
-        './Aisel/Page/AiselPage',
-        'bootstrap',
+        './Kernel/Resource/KernelResource', // Kernel module
+        './Aisel/Homepage/AiselHomepage', // Homepage module
+        './Aisel/Contact/AiselContact', // Contact module
+        './Aisel/Search/AiselSearch', // Search module
+        './Aisel/Page/AiselPage', // Page module
+        'bootstrap', // manually start up angular application
         "... other modules and definitions"
     ],
     priority: [
@@ -168,6 +168,63 @@ require.config({
     ]
 });
  {% endhighlight %}
+
+In **deps** section requireJS loads modules and manually start up angular application with boostrap.js
+{% highlight JavaScript %}
+define([
+    'require',
+    'angular',
+    'app',
+], function (require, angular) {
+    'use strict';
+    require(['domReady!'], function (document) {
+        angular.bootstrap(document, ['app']); // file that holds the root module of our application. (app.js)
+    });
+});
+{% endhighlight %}
+
+**D.**
+With requireJS module loader, app.js and other application javascript files used in application becomes a modules,
+in this case they must be wrapped with **"define([]"**. Code of app.js file
+that wrapped using requireJS module loader are show bellow.
+
+> ... More about module loader at [http://requirejs.org/docs/api.html#funcmodule](http://requirejs.org/docs/api.html#funcmodule)
+
+{% highlight JavaScript %}
+ define([
+         'angular', 'jQuery', 'underscore', 'angular-resource',
+         'angular-cookies', 'angular-sanitize', 'textAngular',
+         'ui-bootstrap-tpls', 'ui-utils', 'angular-gravatar',
+         'md5', 'angular-disqus', 'angular-notify', 'twitter-bootstrap',
+         'angular-ui-router', 'angular-route', 'angular-animate',
+         'angular-loading-bar'], // plug modules defined in require.js
+     function (angular) {
+         'use strict';
+
+         var app = angular.module('app', [
+             'ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'ui.bootstrap', 'ui.router',
+             'ui.utils', 'ui.validate', 'ui.gravatar', 'textAngular', 'ngDisqus', 'cgNotify',
+             'ngAnimate', 'angular-loading-bar',
+             'environment' // plug AngularJS modules
+         ])
+
+         app.value('appSettings', [])
+         .run(['$http', '$rootScope', 'settingsService', 'initService',
+             function ($http, $rootScope, settingsService, initService) {
+                 initService.launch();
+
+                 // run section ...
+             }])
+         .config(function ($provide, $locationProvider, $httpProvider) {
+             $locationProvider.html5Mode(true);
+             document.getElementById("page-is-loading").style.visibility = "hidden";
+
+             // config section ...
+         });
+         return app;
+     });
+{% endhighlight %}
+
 
 ## Final thoughts
 An app with no organisation consumes more time, and a chance that you forgot something and will
