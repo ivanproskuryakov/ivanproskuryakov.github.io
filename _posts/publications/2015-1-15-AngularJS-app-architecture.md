@@ -121,7 +121,11 @@ with ADM(Asynchronous Module Definition) pattern.
 
 **B. RequireJS configuration**<br/>
 Main.js file is the main configuration file with paths to the vendors and dependencies that are used in the app.
-
+The most important part of is the **deps** section. This section gives a better flexibility and allows to have fully demountable modules.
+In this case we may have different modules enabled during the development process or deploy angular app with different modules on board.<br/>
+ - Website app consists of AiselSearcha and AiselPage modules<br/>
+ - Blog app consists of AiselSearch, AiselPage and AiselUser modules<br/>
+ - E-commerce could have: AiselSearch, AiselHomepage, AiselProduct, AiselUser, AiselCart etc..<br/>
  {% highlight JavaScript %}
 require.config({
     // Load project dependencies
@@ -222,8 +226,9 @@ Code of app.js loader has to be also wrapped with **define** as shown below:
 > ... More about module loader at [http://requirejs.org/docs/api.html#funcmodule](http://requirejs.org/docs/api.html#funcmodule)
 
 **D. Module structure**<br/>
-Each logical unit of application functionality must be implemented as single module.
+Each logical unit of functionality must be implemented as a single module.
 Full module name should consist of namespace and module name ex: AiselProduct.
+Basic module structure displayed bellow:
 {% highlight JavaScript %}
 |-- app
 |   |-- Aisel
