@@ -14,7 +14,7 @@ An application with complicated functionality, such as users, content management
 categorisation, tagging, reviews, etc.. and no design pattern is extremely hard to maintain
 as well as to work on issues & to fix bugs.
 
-This explanation is based on design pattern that is being used in a current open-source project [https://github.com/ivanproskuryakov/Aisel](https://github.com/ivanproskuryakov/Aisel)
+This publication is based on design pattern that is being used in [Aisel](https://github.com/ivanproskuryakov/Aisel), the project I'm working on. [https://github.com/ivanproskuryakov/Aisel](https://github.com/ivanproskuryakov/Aisel)
 
  {% highlight JavaScript %}
 |-- 404.html
