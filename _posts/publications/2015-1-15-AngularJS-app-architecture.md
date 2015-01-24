@@ -21,7 +21,7 @@ This explanation is based on design pattern that is being used in a current open
 |-- app
 |   |-- Aisel
 |   |   |-- Product // Product module
-|   |   |   |-- AiselProduct.js // Bootstrap file for dependencies
+|   |   |   |-- AiselProduct.js // Module bootstrap file
 |   |   |   |-- config // Module configuration, routing and constants are stored inside config directory
 |   |   |   |   |-- product.js
 |   |   |   |
@@ -233,7 +233,7 @@ Basic module structure displayed bellow:
 |-- app
 |   |-- Aisel
 |   |   |-- Product // Product module
-|   |   |   |-- AiselProduct.js // Bootstrap file for dependencies
+|   |   |   |-- AiselProduct.js // Module bootstrap file
 |   |   |   |-- config // Module configuration, routing and constants are stored inside config directory
 |   |   |   |   |-- product.js
 |   |   |   |-- controllers // Controllers directory
@@ -250,6 +250,23 @@ Basic module structure displayed bellow:
 |   |   |       |-- product.html
 |   |   |       |-- sidebar.html
 {% endhighlight %}
+**Define** section of AiselProduct.js file loads module dependencies and bootstraps Product module
+{% highlight JavaScript %}
+define(['app',
+    './config/product',
+    './controllers/product',
+    './controllers/productDetails',
+    './controllers/productCategory',
+    './controllers/productCategoryDetails',
+    './services/product',
+    './services/productCategory',
+], function (app) {
+    console.log('Product module loaded ...');
+});
+{% endhighlight %}
+
+<br/>
+
 
 ## Final thoughts
 An app with no organisation consumes more time, and a chance that you forgot something and will
@@ -259,10 +276,10 @@ about the code re-organisation.
 Otherwise, an app designed with modular architecture gives us a possibility to decompose functionality,
 refactor stand alone units any time and group them into modules. It gives us a possibility to delegate different
 development stages to different teams, e.g. team A will work on User functionality, team B will be
-responsible for content management etc..
-
+responsible for content management etc..<br/>
 
 In short an application should have the following principles:<br/>
+
  **A. Code simplicity**<br/>
  This will increase productivity and code understanding for newcomers. Even if the project has no documentation,
  it will be easy to understand design pattern and start contribution.
@@ -281,5 +298,3 @@ In short an application should have the following principles:<br/>
   - Peter has Resource and Contact<br/>
  In this case if Adam breaks the Page module, Peter will still be able to do his tasks with the Contact module,
  even if the whole team commits updates into the Master branch.
-
-This article remains not finished ...

@@ -76,13 +76,15 @@
 }
 
 .top-menu {
-	display: none;
+//	display: none;
 	position: relative;
-    float:right !important;
+    float:left !important;
 	@include media($medium) {
+      float:right !important;
 		@include span-columns(12);
 	}
 	@include media($large) {
+      float:right !important;
 		@include span-columns(7);
 		ul {
 			position: absolute;

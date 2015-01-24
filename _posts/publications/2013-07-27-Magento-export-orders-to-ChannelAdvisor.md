@@ -9,12 +9,9 @@ image:
   feature: Magento.jpg
   teaser: Magento.jpg
 ---
-> [Sources: https://github.com/ivanproskuryakov/MagentoChanneladvisor](https://github.com/ivanproskuryakov/MagentoChanneladvisor)
-
 ChannelAdvisors uses SOAP for API. Of cource plain POST requests, CURL, file_get_contents are the nice things, but for me SOAP is a much easier to use.<br/>
 For more information visit developer.channeladvisor.com website, it contains all the info you will need.<br/>
 Page http://developer.channeladvisor.com/display/cadn/SubmitOrder for Order Submit
-
 
 First of all you have to synchronise all products inside the store with your ChannelAdvisor account.
 A. Check does SKU exists with call “DoesSkuExist”<br/>
@@ -24,10 +21,11 @@ When all product SKU’s would be been synchronized, you may add sales with meth
 Once order would be processed, order will be marked inside Magento with the flag, to skip the order in the next run.
 Script also skips all the orders with statuses “canceled” and “closed”, orders other with other statuses will be processed.<br/>
 
-**Files you will need**<br/>
-magento.php - main file, you will need to launch it each time inside the browser or run it automatically with crontab<br/>
-states.php – list of US states, we need this for name conversions<br/>
-settings.php – file with your settings (account credentials for ChannelAdvisor, e-mail,etc..);<br/>
+> [Sources: https://github.com/ivanproskuryakov/MagentoChanneladvisor](https://github.com/ivanproskuryakov/MagentoChanneladvisor)
+
+magento.php - main file, you will need to launch it each time with the browser or run it automatically with crontab<br/>
+states.php – list of the states, we need this for name conversions<br/>
+settings.php – file with your settings (account credentials for ChannelAdvisor, e-mail etc..)<br/>
 
 **magento.php**
 {% highlight php %}
