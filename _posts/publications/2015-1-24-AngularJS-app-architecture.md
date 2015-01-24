@@ -2,7 +2,7 @@
 layout: publications
 title: "Code organisation in AngularJS applications"
 categories: publications
-modified: 2015-01-13T11:57:41-04:00
+modified: 2015-01-24T11:57:41-04:00
 toc: false
 comments: true
 image:
