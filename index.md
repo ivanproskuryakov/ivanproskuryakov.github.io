@@ -1,6 +1,7 @@
 ---
 layout: home
 permalink: /
+title: 'Symfony2 & AngularJS outsourcing - Ivan Proskuryakov'
 image:
   feature: lock-1600x800.jpg
 ---
