@@ -60,6 +60,25 @@
     </div><!-- /.page-lead -->
     {% endif %}
 
+    <div id="page-wrapper">
+      {% include browser-upgrade.html %}
+
+      <div id="main" role="main">
+        <div class="wrap">
+          <div class="page-title">
+            {% if page.excerpt %}<h2>{{ page.excerpt }}</h2>{% endif %}
+          </div>
+          <div class="archive-wrap">
+            <div class="page-content">
+              {{ content }}
+            </div><!-- /.page-content -->
+          </div class="archive-wrap"><!-- /.archive-wrap -->
+        </div><!-- /.wrap -->
+      </div><!-- /#main -->
+
+      {% include footer.html %}
+    </div>
+
     <script src="{{ site.url }}/js/vendor/jquery-1.9.1.min.js"></script>
     <script src="{{ site.url }}/js/main.js"></script>
 

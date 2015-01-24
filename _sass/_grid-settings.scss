@@ -9,3 +9,6 @@ $micro: new-breakpoint(min-width em(240) max-width em(480) 12);
 $small: new-breakpoint(min-width em(480) max-width em(767) 12);
 $medium: new-breakpoint(min-width em(768) 12);
 $large: new-breakpoint(min-width em(1000) 12);
+
+$homepageMedium: new-breakpoint(min-width em(1000) 12);
+$homepageLarge: new-breakpoint(min-width em(1400) 12);

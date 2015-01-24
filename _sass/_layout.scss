@@ -246,7 +246,16 @@
 	background-attachment: fixed;
 	text-align: center;
 	color: $white;
-	@include media($large) {
+    @include media($medium) {
+      margin-top: 50px;
+      padding: 2em;
+    }
+    @include media($homepageMedium) {
+      margin-top: 60px;
+      padding: 2em;
+    }
+	@include media($homepageLarge) {
+        margin-top: 180px;
 		background-size: cover;
 	}
 }
