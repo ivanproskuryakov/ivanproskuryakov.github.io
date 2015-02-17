@@ -158,7 +158,10 @@
   }
   .page-title {
     @include fill-parent;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
+    h1 {
+      font-size: 30px;
+    }
   }
   @at-root {
     .page-content {
@@ -390,6 +393,7 @@
   margin-top: 0;
   @include font-size(12, no);
   color: lighten($text-color, 25);
+  line-height: 1;
 }
 
 .tile {
