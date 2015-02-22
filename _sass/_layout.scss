@@ -163,6 +163,10 @@
       font-size: 30px;
     }
   }
+  article .page-title {
+    margin-bottom: 20px;
+  }
+
   @at-root {
     .page-content {
       //			@include media($medium) {
