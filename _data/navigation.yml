@@ -5,6 +5,10 @@
 #  excerpt: "Everything you need to know to get started with Skinny Bones and Jekyll."
 #  image: 400x250.gif
 
+
+- title: Aisel
+  url: http://aisel.co/
+
 - title: Publications
   url: /publications/
 #  excerpt: "Examples of long form posts."
