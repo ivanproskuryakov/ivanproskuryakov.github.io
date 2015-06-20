@@ -9,26 +9,13 @@ image:
   feature: AngularJS.jpg
   teaser: AngularJS.jpg
 ---
+All frameworks have error handling: Symfony, Rails, Spring and approach always the same: display all exceptions in development environment, and required minimum when app in production.
 
-Displaying error messages important, right?
-All languages and frameworks have error handling, no matter what you use: PHP, RoR, Java or anything else.<br/>
-Developers tweak settings for Test/Development/Production environments, maybe customize error templates. Everybody happy!<br/>
+So we need to pass all errors via API from backend to frontend, for these we will need:<br/>
+ * Add exception listener on global level for backend(Symfony2), and throw unified error Response with API.<br/>
+ * Add HTTP error interceptor(AngularJS), it will consume response error data directly from API and display it on separate templates.<br/>
 
-But when we work with RESTful application or a website development process is more complicated.
-With client-server approach backend team provide API endpoints the frontend, which consumes the results.
-If HTTP error comes up, developers go to console tab in favourite browser or use other tool trying to reproduce the request and get a message<br/>
-Why do we need to do this redundant work just to get an error message?<br/>
-Why not to show custom templates for 404 or 500 HTTP errors instead of showing blank or broken window?<br/>
-I don't understand checking console each time when a bad HTTP request was sent and I guess that we totally forgot about error templates or better error handling.
-
-Php, RoR, Java and others, they all show all exceptions in development environment, and required minimum when app in production
-So why we don't use the same approach? We need implement only two tings:<br/>
- - Add exception handler on global level for the backend, and throw unified error Response with API<br/>
- - Add HTTP error listener, which will consume messages directly from API and display them<br/>
-That's all..
-
-.. Most of time I work with Symfony2 and AnguarJS, so code examples based on frameworks<br/>
-
+**Implementation:**<br/>
 In AngularJS add new route with name "exception" and new interceptor which will redirect to this "exception" route, if an HTTP error comes up.
 {% highlight javascript %}
 'use strict';
@@ -315,3 +302,13 @@ And its implementation:
     }
 
 {% endhighlight %}
+
+**P.S.**
+When we work with RESTful application or a website development process is more complicated. With client-server approach backend team provide API endpoints the frontend, which consumes the results.<br/>
+If HTTP error comes up, developers usually open console tab in favourite browser or use something else trying reproduce the request and get error message.
+
+Why do we need to do this redundant work just to get an error message?<br/>
+Why not to show custom templates for 404 or 500 HTTP errors instead of showing blank or broken window?<br/>
+I guess that we always forgot about error templates and error handling in RESTful apps. <br/>
+
+
