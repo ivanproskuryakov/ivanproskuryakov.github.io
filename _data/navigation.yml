@@ -6,15 +6,10 @@
 #  image: 400x250.gif
 
 - title: Hire me
-  url: https://ru.linkedin.com/in/ivanproskuryakov
-
-- title: Aisel
-  url: http://aisel.co/
+  url: /hire/
 
 - title: Publications
   url: /publications/
-#  excerpt: "Examples of long form posts."
-#  image: 400x250.gif
 
-#- title: Get in touch
-#  url: /get-in-touch/
+- title: Aisel
+  url: http://aisel.co/
