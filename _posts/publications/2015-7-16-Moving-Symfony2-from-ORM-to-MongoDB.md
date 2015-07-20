@@ -1,10 +1,13 @@
 ---
 layout: publications
-title: "Moving Symfony2 from Doctrine ORM to MongoDB"
+title: "Moving Symfony2 from ORM to MongoDB"
 categories: publications
 modified: 2015-06-16T11:57:41-04:00
 toc: false
 comments: true
+image:
+  feature: sf2.jpg
+  teaser: sf2.jpg
 ---
 
 ##Installing mongo
