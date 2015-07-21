@@ -121,6 +121,10 @@ doctrine:mongodb:tail-cursor             Tails a mongodb cursor and processes th
 Its not hard at all to move all your Symfony models that were done as entities to mongodb collection.
 Doctrine ORM use **Entity** directory for models, with Doctrine ODM models must me located inside **Document** directory.
 
+What was ```use Doctrine\ORM\EntityManager;```, service and ``` @doctrine.orm.entity_manager```
+Become ``` use Doctrine\ODM\MongoDB\DocumentManager; ``` and ``` @doctrine.odm.mongodb.document_manager ```
+ 
+ 
 **Model definintien in ORM**
 {% highlight JavaScript %}
 <?php
@@ -130,6 +134,7 @@ namespace Aisel\AddressingBundle\Entity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Country
@@ -139,6 +144,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="Aisel\AddressingBundle\Entity\CountryRepository")
  * @ORM\Table(name="aisel_addressing_country")
+ * @UniqueEntity("username")
+ * @UniqueEntity("email")
  */
 class Country
 {
@@ -167,8 +174,11 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
  * @author Ivan Proskoryakov <volgodark@gmail.com>
  *
  * @ODM\HasLifecycleCallbacks()
- * @ODM\Document(collection="aisel_addressing_country")
- * @ODM\Document(repositoryClass="Aisel\AddressingBundle\Document\CountryRepository")
+ * @ODM\Document(
+ *      collection="aisel_addressing_country",
+ *      repositoryClass="Aisel\AddressingBundle\Document\CountryRepository"
+ * )
+ * @ODM\UniqueIndex(keys={"username"="asc", "email"="asc"})
  */
 class Country
 {
@@ -201,6 +211,24 @@ private $country;
 {% endhighlight %}
 
 **ORM OneToOne**<br/>
+{% highlight JavaScript %}
+/**
+ * @var Country
+ * @ORM\OneToOne(targetEntity="Aisel\AddressingBundle\Entity\Country")
+ * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+ */
+private $country;
+{% endhighlight %}
+
+become ReferenceOne in ODM
+{% highlight JavaScript %}
+/**
+ * @var Country
+ * @ODM\ReferenceOne("Aisel\AddressingBundle\Document\Country", nullable=true)
+ */
+{% endhighlight %}
+
+**ORM OneToMeny**<br/>
 {% highlight JavaScript %}
 /**
  * @var Country
