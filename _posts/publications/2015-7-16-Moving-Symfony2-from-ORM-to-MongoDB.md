@@ -210,25 +210,8 @@ become ReferenceOne in ODM
 private $country;
 {% endhighlight %}
 
+
 **ORM OneToOne**<br/>
-{% highlight JavaScript %}
-/**
- * @var Country
- * @ORM\OneToOne(targetEntity="Aisel\AddressingBundle\Entity\Country")
- * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
- */
-private $country;
-{% endhighlight %}
-
-become ReferenceOne in ODM
-{% highlight JavaScript %}
-/**
- * @var Country
- * @ODM\ReferenceOne("Aisel\AddressingBundle\Document\Country", nullable=true)
- */
-{% endhighlight %}
-
-**ORM OneToMeny**<br/>
 {% highlight JavaScript %}
 /**
  * @var Country
