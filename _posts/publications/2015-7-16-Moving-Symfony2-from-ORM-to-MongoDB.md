@@ -228,3 +228,35 @@ become ReferenceOne in ODM
  * @ODM\ReferenceOne("Aisel\AddressingBundle\Document\Country", nullable=true)
  */
 {% endhighlight %}
+
+
+## Queries
+
+Query in ORM
+{% highlight JavaScript %}
+        $query = $this->getEntityManager()->createQueryBuilder();
+        $query->select('c')
+            ->from('Aisel\CartBundle\Document\Cart', 'c')
+            ->where('c.product = :productId')->setParameter('productId', $product->getId())
+            ->andWhere('c.frontenduser = :userId')->setParameter('userId', $user->getId());
+        
+        $cartItem = $query
+        ->getQuery()
+        ->getResult();
+        
+{% endhighlight %}
+
+become in ODM
+{% highlight JavaScript %}
+        $query = $this
+            ->getDocumentManager()
+            ->createQueryBuilder('Aisel\CartBundle\Document\Cart')
+            ->field('product')->equals($product->getId())
+            ->field('frontenduser')->equals($user->getId());
+        
+        $cartItem = $query
+            ->getQuery()
+            ->execute()
+            ->toArray();
+
+{% endhighlight %}
