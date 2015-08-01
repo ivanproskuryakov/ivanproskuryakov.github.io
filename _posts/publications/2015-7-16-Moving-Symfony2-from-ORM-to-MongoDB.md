@@ -205,7 +205,7 @@ become ReferenceOne in ODM
 {% highlight JavaScript %}
 /**
  * @var Country
- * @ODM\ReferenceOne("Aisel\AddressingBundle\Document\Country", nullable=true)
+ * @ODM\ReferenceOne(targetDocument="Aisel\AddressingBundle\Document\Country")
  */
 private $country;
 {% endhighlight %}
@@ -225,7 +225,7 @@ become ReferenceOne in ODM
 {% highlight JavaScript %}
 /**
  * @var Country
- * @ODM\ReferenceOne("Aisel\AddressingBundle\Document\Country", nullable=true)
+ * @ODM\ReferenceOne(targetDocument="Aisel\AddressingBundle\Document\Country")
  */
 {% endhighlight %}
 
